@@ -1,0 +1,74 @@
+<html>
+  <body>
+    <style>
+      body {
+        padding: 25px;
+        font: 14px Helvetica;
+      }
+      .item.complete h3 {
+        text-decoration: line-through;
+      }
+      .item h3 {
+        margin: 0;
+      }
+      .item {
+        width: 300px;
+        padding: 15px;
+        border-bottom: 1px dotted #eee;
+      }
+    </style>
+
+    <div class="item">
+      <h3 class="name"></h3>
+      <a href="#" class="remove">remove</a>
+      <a href="#" class="done">done</a>
+    </div>
+
+    <script src="../build/build.js"></script>
+
+    <script>
+      var View = require('view');
+      var Emitter = require('component-emitter');
+      var tmpl = document.querySelector('.item');
+      document.body.removeChild(tmpl);
+
+      function Item(name) {
+        this.name = name;
+        Emitter(this);
+      }
+
+      function ItemView(item) {
+        View.call(this, item, tmpl.cloneNode(true));
+        this.bind('click .remove', 'remove');
+        this.bind('click .done', 'complete');
+      }
+
+      ItemView.prototype.__proto__ = View.prototype;
+
+      ItemView.prototype.remove = function(){
+        document.body.removeChild(this.el);
+      };
+
+      ItemView.prototype.complete = function(){
+        this.obj.complete = true;
+        this.el.classList.add('complete');
+      };
+
+      var a = new Item('Get groceries')
+      var b = new Item('Feed cats')
+      var c = new Item('Feed ferrets')
+
+      var av = new ItemView(a)
+      var bv = new ItemView(b)
+      var cv = new ItemView(c)
+
+      cv.unbind();
+      // cv.unbind('click');
+      // cv.unbind('click .remove');
+
+      document.body.appendChild(av.el);
+      document.body.appendChild(bv.el);
+      document.body.appendChild(cv.el);
+    </script>
+  </body>
+</html>

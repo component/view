@@ -1,0 +1,19 @@
+{
+  "name": "view",
+  "repo": "component/view",
+  "description": "Higher level views built on reactive",
+  "version": "0.0.1",
+  "keywords": ["view", "template", "engine"],
+  "dependencies": {
+    "component/reactive": "*",
+    "component/delegate": "*",
+    "component/object": "*"
+  },
+  "development": {
+    "component/emitter": "*"
+  },
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
