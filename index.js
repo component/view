@@ -29,7 +29,7 @@ module.exports = View;
 function View(obj, el) {
   this.el = el;
   this.obj = obj;
-  this.view = reactive(el, obj);
+  this.view = reactive(el, obj, this);
   this.bindings = {};
 }
 
