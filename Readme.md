@@ -7,6 +7,11 @@
 
     $ component install component/view
 
+## Demo Example
+
+    $ component build
+    $ open examples/todo.html
+
 ## API
 
 ### View()

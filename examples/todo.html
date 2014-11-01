@@ -28,7 +28,7 @@
 
     <script>
       var View = require('view');
-      var Emitter = require('component-emitter');
+      var Emitter = require.latest('component~emitter');
       var tmpl = document.querySelector('.item');
       document.body.removeChild(tmpl);
 
@@ -38,7 +38,9 @@
       }
 
       function ItemView(item) {
-        View.call(this, item, tmpl.cloneNode(true));
+        var element = tmpl.cloneNode(true);
+        element.querySelector('.name').textContent = item.name;
+        View.call(this, item, element);
         this.bind('click .remove', 'remove');
         this.bind('click .done', 'complete');
       }
