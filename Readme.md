@@ -2,6 +2,7 @@
 # View
 
   Higher level views built on [reactive](https://github.com/component/reactive).
+  > __Note:__ This component is not compatible anymore with the latest reactive version.
 
 ## Installation
 
